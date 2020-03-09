@@ -2,11 +2,7 @@ pipeline {
     agent any 
     stages {
     
-    stage('CleanWorkspace') {
-            steps {
-                cleanWs()
-            }
-        }
+    
         
         stage('Compile and Build') {
            steps {
@@ -30,6 +26,12 @@ pipeline {
            steps {
                pushToCloudFoundry cloudSpace: 'vik-spring-space', credentialsId: 'pcf-creds', organization: 'vik-spring-org', target: 'api.pivotal.run.io'
            }
+        }
+        
+        stage('CleanWorkspace') {
+            steps {
+                cleanWs()
+            }
         }
         
         
