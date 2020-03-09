@@ -24,7 +24,7 @@ pipeline {
         
         stage('Deploy Stage') {
            steps {
-               pushToCloudFoundry cloudSpace: 'vik-spring-space', credentialsId: 'pcf-creds', organization: 'vik-spring-org', target: 'api.run.pivotal.io'
+               pushToCloudFoundry cloudSpace: 'rapid-api-space', credentialsId: 'pcf-creds', organization: 'vik-spring-org', target: 'api.run.pivotal.io'
            }
         }
         
