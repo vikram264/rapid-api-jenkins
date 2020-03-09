@@ -1,9 +1,7 @@
 pipeline {
     agent any 
     stages {
-    
-    
-        
+      
         stage('Compile and Build') {
            steps {
                withMaven(maven : 'maven_3_6_3') {
@@ -26,14 +24,12 @@ pipeline {
            steps {
                pushToCloudFoundry cloudSpace: 'rapid-api-space', credentialsId: 'pcf-creds', organization: 'vik-spring-org', target: 'api.run.pivotal.io'
            }
+        }      
+    }
+    
+    post { 
+        always { 
+            cleanWs()
         }
-        
-        stage('CleanWorkspace') {
-            steps {
-                cleanWs()
-            }
-        }
-        
-        
     }
 }
